@@ -195,7 +195,7 @@ az container show --resource-group $resourceGroupName --name $containerGroupName
 
 If it is successful, you will see the screen below and you should notice a Lock icon in the address bar if the site is being served out securely. This means that Caddy has gotten valid certificates from Let's Encrypt and you should also be able to see them in the `caddy-certs` File Share.
 
-![Pypi Server](.\assets\pypiserver-ssl.png)
+![Pypi Server](./assets/pypiserver-ssl.png)
 
 **Downloading and Uploading Packages**
 
@@ -209,10 +209,13 @@ If you want to download for a specific version of Python use the following:
 
 ``` 
 pip download requests --timeout 60 --python-version 3.7.3 --only-binary=:all:
+```
 
 These packages (`.whl` files) can then be uploaded to your `pypipackages` File Share in Azure.
 
-<img src=".\assets\pypipackages-fileshare.png" style="zoom:50%;" />
+<img src="./assets/pypipackages-fileshare.png" style="zoom:50%;" />
+
+
 
 
 
@@ -223,8 +226,6 @@ You can view where pip is looking for and using for your configuration on your p
 ``` bash
 pip config list -v
 ```
-
-
 
 On Windows you will need to add this content below to a file named `pip.ini` in `C:\ProgramData\pip\pip.ini`. Note that this directory and file may not exist and may need to be created.
 
@@ -243,7 +244,7 @@ Note that the `--timeout` option is useful if you are getting dropped connection
 pip install requests --no-cache-dir --timeout 60
 ```
 
-![](.\assets\pip-download.png)
+![](./assets/pip-download.png)
 
 
 
