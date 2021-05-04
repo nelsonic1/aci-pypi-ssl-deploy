@@ -5,6 +5,8 @@ This repo contains all of the tools, references and deployment scripts you need 
 - [Caddy](https://caddyserver.com/) | [dockerhub](https://hub.docker.com/_/caddy?tab=description)
 - [pypiserver Github](https://github.com/pypiserver/pypiserver) | [dockerhub](https://hub.docker.com/r/pypiserver/pypiserver)
 
+![](./assets/arch.png)
+
 ## Pre-Requisites
 
 Familiarity with:
