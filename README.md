@@ -33,7 +33,26 @@ git clone https://github.com/nelsonic1/aci-pypi-ssl-deploy.git
 cd aci-pypi-ssl-deploy/
 ```
 
+### Subscription
 
+If your Azure tenant has multiple subscriptions, ensure you are in the correct one for these tasks.
+
+**Check current Subscription**
+
+``` bash
+az account show --output table
+```
+
+**List all subscriptions**
+
+```bash
+az account list --output table
+```
+
+**Switch to a different subscription**
+```bash
+az account set --subscription "My Subscription"
+```
 
 ### Environment Variables
 
