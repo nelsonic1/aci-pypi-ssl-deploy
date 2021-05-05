@@ -234,7 +234,7 @@ If you want to download for a specific version of Python use the following:
 pip download requests --timeout 60 --python-version 3.7.3 --only-binary=:all:
 ```
 
-These packages (`.whl` files) can then be uploaded to your `pypipackages` File Share in Azure.
+These packages (`.whl` files) can then be uploaded to your `pypipackages` File Share in Azure. A restart of the Pypi container may be required for the packages to be reflected in the index.
 
 <img src="./assets/pypipackages-fileshare.png" style="zoom:50%;" />
 
