@@ -33,7 +33,7 @@ git clone https://github.com/nelsonic1/aci-pypi-ssl-deploy.git
 cd aci-pypi-ssl-deploy/
 ```
 
-### Subscription
+### Subscriptions
 
 If your Azure tenant has multiple subscriptions, ensure you are in the correct one for these tasks.
 
@@ -97,13 +97,15 @@ Our Caddy and Pypiserver containers will need some Azure File Shares to hold cer
 **Create Storage Account**
 
 ``` bash
-az storage account create \
+az storage account create \ 
     --resource-group $resourceGroupName \
     --name $storageAccountName \
     --location $locationName \
-    --kind StorageV2 \
-    --sku Standard_LRS \
+    --kind FileStorage \
+    --sku Premium_LRS \
     --enable-large-file-share \
+    --min-tls-version TLS1_2 \
+    --allow-blob-public-access false \
     --output none
 ```
 
@@ -177,7 +179,7 @@ nano deploy-aci-ssl-pypi.yaml
 **Create the Container Group**
 
 ``` bash
-az container create --resource-group $resourceGroupName -file deploy-aci-ssl-pypi.yaml
+az container create --resource-group $resourceGroupName --file deploy-aci-ssl-pypi.yaml
 ```
 
 **List Container Groups Available**
