@@ -1,6 +1,6 @@
 api-version: 2019-12-01
 location: eastus
-name: pypi-with-ssl
+name: yourContainerGroupName
 properties:
   containers:
   - name: caddy

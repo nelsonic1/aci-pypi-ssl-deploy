@@ -17,8 +17,6 @@ Familiarity with:
 - Azure CLI / Cloud Shell
 - Git
 
-
-
 ## Getting Started
 
 All commands below will be done inside the Azure Cloud Shell.
@@ -35,7 +33,7 @@ cd aci-pypi-ssl-deploy/
 
 ### Subscriptions
 
-If your Azure tenant has multiple subscriptions, ensure you are in the correct one for these tasks.
+If your Azure tenant has multiple subscriptions, ensure you are in the correct subscription before proceeding.
 
 **Check current Subscription**
 
@@ -70,8 +68,6 @@ export storageAccountKey=""
 export containerGroupName="pypi-with-ssl"
 ```
 
-
-
 ### Resource Groups
 
 Next, we need a resource group to deploy your Container Group and Storage Account to.
@@ -87,8 +83,6 @@ az group create --name $resourceGroupName --location $locationName
 ``` bash
 az group list
 ```
-
-
 
 ### Storage Accounts
 
@@ -159,8 +153,6 @@ az storage share-rm create \
     --access-tier Premium
 ```
 
-
-
 ### Container Group Deployment
 
 First, we will need to update the file `aci-pypi-ssl-deploy.yaml`. Azure Cloud Shell has a number of editors built in such as `nano` and `vi` so feel free to use what you're comfortable with. You will need to change a number of things as marked inside the file. Basically anything that says 'your' should be replaced and everything else should remain untouched.
@@ -187,8 +179,6 @@ az container create --resource-group $resourceGroupName --file deploy-aci-ssl-py
 ``` bash
 az container list --resource-group $resourceGroupName
 ```
-
-
 
 ### Cleanup
 
@@ -238,10 +228,6 @@ These packages (`.whl` files) can then be uploaded to your `pypipackages` File S
 
 <img src="./assets/pypipackages-fileshare.png" style="zoom:50%;" />
 
-
-
-
-
 **Pip Client Configuration**
 
 You can view where pip is looking for and using for your configuration on your platform (Win/Mac/Linux) by running:
@@ -269,37 +255,34 @@ pip install requests --no-cache-dir --timeout 60
 
 ![](./assets/pip-download.png)
 
-
-
 ## References
 
-https://docs.microsoft.com/en-gb/azure/container-instances/container-instances-quickstart
+<https://docs.microsoft.com/en-gb/azure/container-instances/container-instances-quickstart>
 
-https://docs.microsoft.com/en-gb/azure/container-instances/container-instances-multi-container-yaml
+<https://docs.microsoft.com/en-gb/azure/container-instances/container-instances-multi-container-yaml>
 
-https://docs.microsoft.com/en-gb/azure/container-instances/container-instances-volume-azure-files
+<https://docs.microsoft.com/en-gb/azure/container-instances/container-instances-volume-azure-files>
 
-https://docs.microsoft.com/en-gb/azure/container-instances/container-instances-get-logs
+<https://docs.microsoft.com/en-gb/azure/container-instances/container-instances-get-logs>
 
-https://docs.microsoft.com/en-gb/azure/container-instances/container-instances-container-group-ssl
+<https://docs.microsoft.com/en-gb/azure/container-instances/container-instances-container-group-ssl>
 
-https://docs.microsoft.com/en-gb/azure/storage/files/storage-how-to-use-files-cli
+<https://docs.microsoft.com/en-gb/azure/storage/files/storage-how-to-use-files-cli>
 
-https://itnext.io/automatic-https-with-azure-container-instances-aci-4c4c8b03e8c9
+<https://itnext.io/automatic-https-with-azure-container-instances-aci-4c4c8b03e8c9>
 
-https://hub.docker.com/r/pypiserver/pypiserver
+<https://hub.docker.com/r/pypiserver/pypiserver>
 
-https://hub.docker.com/_/caddy
+<https://hub.docker.com/_/caddy>
 
-https://www.antstack.io/blog/how-to-enable-tls-for-hasura-graphql-engine-in-azure-caddy/
+<https://www.antstack.io/blog/how-to-enable-tls-for-hasura-graphql-engine-in-azure-caddy/>
 
-https://github.com/antstackio/azure-hasura-caddy-arm-template
+<https://github.com/antstackio/azure-hasura-caddy-arm-template>
 
-https://docs.microsoft.com/en-us/azure/container-instances/container-instances-reference-yaml
+<https://docs.microsoft.com/en-us/azure/container-instances/container-instances-reference-yaml>
 
-https://github.com/pypiserver/pypiserver#behind-a-reverse-proxy
+<https://github.com/pypiserver/pypiserver#behind-a-reverse-proxy>
 
-https://caddyserver.com/docs/caddyfile/directives/reverse_proxy
+<https://caddyserver.com/docs/caddyfile/directives/reverse_proxy>
 
-https://docs.docker.com/cloud/aci-integration/
-
+<https://docs.docker.com/cloud/aci-integration/>
