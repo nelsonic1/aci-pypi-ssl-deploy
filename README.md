@@ -159,10 +159,28 @@ First, we will need to update the file `aci-pypi-ssl-deploy.yaml`. Azure Cloud S
 
 **Edit the Deployment File**
 
-This is where your environment variables will come in handy. 
+- Container Group Name
+
+  - The section at the top of the deploy script that contains `name: yourContainerGroupName` should be set to something descriptive to refer to to all containers in the deployment like `pypi-caddy` or `pypi-with-ssl`
+
+- PyPi Server Resources
+
+  - Consider upping the CPU and memory from 1/1.5  respectively to something like 4/2 to avoid timeout issues when executing pip installs later but keep in mind that more CPU and memory means more costs. 
+  - The `--timeout` flag during pip install is also useful. See instructions for pip installing later in this documentation.
+
+- DNS Name Label
+
+  - The dnsNameLabel in the yaml deploy script should be set to a unique identifier that you would like used in your Fully Qualified Domain Name (FQDN). 
+
+  - An example: `dnsNameLabel: pypiserver1234` results in a FQDN of `pypiserver1234.eastus.azurecontainer.io`
+
+  - This value should also be set when defining your reverse proxy under the caddy container deploy commands.
+
+    
 
 ``` bash
 echo $storageAccountName $storageAccountKey
+echo $containerGroupName
 # copy the values above as we'll use them in the deploy script
 
 nano deploy-aci-ssl-pypi.yaml
@@ -185,7 +203,7 @@ az container list --resource-group $resourceGroupName
 **Delete the Container Group**
 
 ``` bash
-az container delete --name pypi-with-ssl --resource-group $resourceGroupName
+az container delete --name $containerGroupName --resource-group $resourceGroupName
 ```
 
 **Delete the Storage Account**
@@ -237,6 +255,8 @@ pip config list -v
 ```
 
 On Windows you will need to add this content below to a file named `pip.ini` in `C:\ProgramData\pip\pip.ini`. Note that this directory and file may not exist and may need to be created.
+
+Replace *yourdnsnamelabel* in the URL below with the value you set in your deploy script.
 
 ``` bash
 [global]
