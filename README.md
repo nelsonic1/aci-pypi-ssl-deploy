@@ -91,7 +91,7 @@ Our Caddy and Pypiserver containers will need some Azure File Shares to hold cer
 **Create Storage Account**
 
 ``` bash
-az storage account create \ 
+az storage account create \
     --resource-group $resourceGroupName \
     --name $storageAccountName \
     --location $locationName \
